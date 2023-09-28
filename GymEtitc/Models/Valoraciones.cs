@@ -14,4 +14,8 @@ public partial class Valoraciones
     public string DescripcionValoracion { get; set; } = null!;
 
     public int RecomendacionValoracion { get; set; }
+
+    public int NumDocumento { get; set; }
+
+    public virtual Usuarios NumDocumentoNavigation { get; set; } = null!;
 }

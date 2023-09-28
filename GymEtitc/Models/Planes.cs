@@ -12,4 +12,6 @@ public partial class Planes
     public int DuracionMesesPlan { get; set; }
 
     public string DescripcionPlan { get; set; } = null!;
+
+    public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
 }

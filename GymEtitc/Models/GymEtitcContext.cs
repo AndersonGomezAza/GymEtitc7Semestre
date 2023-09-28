@@ -37,7 +37,7 @@ public partial class GymEtitcContext : DbContext
     {
         modelBuilder.Entity<Actividades>(entity =>
         {
-            entity.HasKey(e => e.IdActividad).HasName("PK__activida__DCD3488320E40E8A");
+            entity.HasKey(e => e.IdActividad).HasName("PK__activida__DCD3488398578586");
 
             entity.ToTable("actividades");
 
@@ -56,7 +56,7 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Implementos>(entity =>
         {
-            entity.HasKey(e => e.IdImplemento).HasName("PK__implemen__A5EEC5D0FDE80294");
+            entity.HasKey(e => e.IdImplemento).HasName("PK__implemen__A5EEC5D08716F6BC");
 
             entity.ToTable("implementos");
 
@@ -78,7 +78,7 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Maquinarias>(entity =>
         {
-            entity.HasKey(e => e.IdMaquinaria).HasName("PK__maquinar__8B61DA9719AE2BB8");
+            entity.HasKey(e => e.IdMaquinaria).HasName("PK__maquinar__8B61DA977846FB0A");
 
             entity.ToTable("maquinarias");
 
@@ -108,7 +108,7 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Planes>(entity =>
         {
-            entity.HasKey(e => e.IdPlan).HasName("PK__planes__3901EAE3DD2CC553");
+            entity.HasKey(e => e.IdPlan).HasName("PK__planes__3901EAE3172BC725");
 
             entity.ToTable("planes");
 
@@ -126,7 +126,7 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Rutinas>(entity =>
         {
-            entity.HasKey(e => e.IdRutina).HasName("PK__rutinas__A28496674816D4BE");
+            entity.HasKey(e => e.IdRutina).HasName("PK__rutinas__A2849667CE613BB4");
 
             entity.ToTable("rutinas");
 
@@ -150,7 +150,7 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Usuarios>(entity =>
         {
-            entity.HasKey(e => e.NumDocumento).HasName("PK__usuarios__7BBF0F6F5B28AA77");
+            entity.HasKey(e => e.NumDocumento).HasName("PK__usuarios__7BBF0F6F09BF8ABA");
 
             entity.ToTable("usuarios");
 
@@ -164,6 +164,7 @@ public partial class GymEtitcContext : DbContext
             entity.Property(e => e.FechaRegistro)
                 .HasColumnType("date")
                 .HasColumnName("fecha_registro");
+            entity.Property(e => e.IdPlan).HasColumnName("id_plan");
             entity.Property(e => e.Nombres)
                 .HasMaxLength(30)
                 .IsUnicode(false)
@@ -176,11 +177,16 @@ public partial class GymEtitcContext : DbContext
                 .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("tipo_doc");
+
+            entity.HasOne(d => d.IdPlanNavigation).WithMany(p => p.Usuarios)
+                .HasForeignKey(d => d.IdPlan)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__usuarios__id_pla__46E78A0C");
         });
 
         modelBuilder.Entity<Valoraciones>(entity =>
         {
-            entity.HasKey(e => e.IdValoracion).HasName("PK__valoraci__1861B249ED9DD7B1");
+            entity.HasKey(e => e.IdValoracion).HasName("PK__valoraci__1861B249F366BEE4");
 
             entity.ToTable("valoraciones");
 
@@ -197,7 +203,13 @@ public partial class GymEtitcContext : DbContext
             entity.Property(e => e.FechaValoracion)
                 .HasColumnType("date")
                 .HasColumnName("fecha_valoracion");
+            entity.Property(e => e.NumDocumento).HasColumnName("num_documento");
             entity.Property(e => e.RecomendacionValoracion).HasColumnName("recomendacion_valoracion");
+
+            entity.HasOne(d => d.NumDocumentoNavigation).WithMany(p => p.Valoraciones)
+                .HasForeignKey(d => d.NumDocumento)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__valoracio__num_d__4BAC3F29");
         });
 
         OnModelCreatingPartial(modelBuilder);

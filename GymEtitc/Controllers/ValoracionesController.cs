@@ -28,7 +28,17 @@ namespace GymEtitc.Controllers
           {
               return NotFound();
           }
-            return await _context.Valoraciones.ToListAsync();
+            var valoraciones = from valoracion in await _context.Valoraciones.ToListAsync()
+                           join usuario in await _context.Usuarios.ToListAsync() on valoracion.NumDocumento equals usuario.NumDocumento
+                           select new
+                           {
+                               valoracion.FechaValoracion,
+                               valoracion.CategoriaValoracion,
+                               valoracion.DescripcionValoracion,
+                               usuario.Nombres,
+                               usuario.Apellidos,
+                           };
+            return Ok(valoraciones.ToList());
         }
 
         // GET: api/Valoraciones/5

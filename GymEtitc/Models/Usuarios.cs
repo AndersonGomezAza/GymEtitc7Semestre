@@ -16,4 +16,10 @@ public partial class Usuarios
     public string Rol { get; set; } = null!;
 
     public string TipoDoc { get; set; } = null!;
+
+    public int IdPlan { get; set; }
+
+    public virtual Planes IdPlanNavigation { get; set; } = null!;
+
+    public virtual ICollection<Valoraciones> Valoraciones { get; set; } = new List<Valoraciones>();
 }
