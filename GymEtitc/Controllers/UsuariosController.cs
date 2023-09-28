@@ -28,7 +28,17 @@ namespace GymEtitc.Controllers
           {
               return NotFound();
           }
-            return await _context.Usuarios.ToListAsync();
+            
+            var usuarios = from usuario in await _context.Usuarios.ToListAsync()
+                           join plan in await _context.Planes.ToListAsync() on usuario.IdPlan equals plan.IdPlan
+                           select new
+                           {
+                               usuario.NumDocumento,
+                               usuario.Nombres,
+                               usuario.Apellidos,
+                               plan.DescripcionPlan,
+                           };
+            return Ok(usuarios.ToList());
         }
 
         // GET: api/Usuarios/5
