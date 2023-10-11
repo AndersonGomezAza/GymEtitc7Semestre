@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GymEtitc.Models;
 
-public partial class Valoracione
+public partial class Valoraciones
 {
     public int IdValoracion { get; set; }
 
@@ -17,5 +17,5 @@ public partial class Valoracione
 
     public int IdUsuario { get; set; }
 
-    public virtual Usuario IdUsuarioNavigation { get; set; } = null!;
+    public virtual Usuarios IdUsuarioNavigation { get; set; } = null!;
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GymEtitc.Models;
 
-public partial class Maquinaria
+public partial class Maquinarias
 {
     public int IdMaquinaria { get; set; }
 

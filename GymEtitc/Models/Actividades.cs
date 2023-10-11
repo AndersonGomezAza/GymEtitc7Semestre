@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GymEtitc.Models;
 
-public partial class Actividade
+public partial class Actividades
 {
     public int IdActividad { get; set; }
 

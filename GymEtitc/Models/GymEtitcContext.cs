@@ -15,19 +15,19 @@ public partial class GymEtitcContext : DbContext
     {
     }
 
-    public virtual DbSet<Actividade> Actividades { get; set; }
+    public virtual DbSet<Actividades> Actividades { get; set; }
 
-    public virtual DbSet<Implemento> Implementos { get; set; }
+    public virtual DbSet<Implementos> Implementos { get; set; }
 
-    public virtual DbSet<Maquinaria> Maquinarias { get; set; }
+    public virtual DbSet<Maquinarias> Maquinarias { get; set; }
 
-    public virtual DbSet<Plane> Planes { get; set; }
+    public virtual DbSet<Planes> Planes { get; set; }
 
-    public virtual DbSet<Rutina> Rutinas { get; set; }
+    public virtual DbSet<Rutinas> Rutinas { get; set; }
 
-    public virtual DbSet<Usuario> Usuarios { get; set; }
+    public virtual DbSet<Usuarios> Usuarios { get; set; }
 
-    public virtual DbSet<Valoracione> Valoraciones { get; set; }
+    public virtual DbSet<Valoraciones> Valoraciones { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -35,7 +35,7 @@ public partial class GymEtitcContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Actividade>(entity =>
+        modelBuilder.Entity<Actividades>(entity =>
         {
             entity.HasKey(e => e.IdActividad).HasName("PK__activida__DCD34883C155B66B");
 
@@ -52,7 +52,7 @@ public partial class GymEtitcContext : DbContext
             entity.Property(e => e.DuracionMinActividad).HasColumnName("duracion_min_actividad");
         });
 
-        modelBuilder.Entity<Implemento>(entity =>
+        modelBuilder.Entity<Implementos>(entity =>
         {
             entity.HasKey(e => e.IdImplemento).HasName("PK__implemen__A5EEC5D06E66D1E4");
 
@@ -76,7 +76,7 @@ public partial class GymEtitcContext : DbContext
                 .HasColumnName("serial_implemento");
         });
 
-        modelBuilder.Entity<Maquinaria>(entity =>
+        modelBuilder.Entity<Maquinarias>(entity =>
         {
             entity.HasKey(e => e.IdMaquinaria).HasName("PK__maquinar__8B61DA9769B1D29A");
 
@@ -104,7 +104,7 @@ public partial class GymEtitcContext : DbContext
                 .HasColumnName("serial_maquinaria");
         });
 
-        modelBuilder.Entity<Plane>(entity =>
+        modelBuilder.Entity<Planes>(entity =>
         {
             entity.HasKey(e => e.IdPlan).HasName("PK__planes__3901EAE34733424F");
 
@@ -120,7 +120,7 @@ public partial class GymEtitcContext : DbContext
                 .HasColumnName("valor_plan");
         });
 
-        modelBuilder.Entity<Rutina>(entity =>
+        modelBuilder.Entity<Rutinas>(entity =>
         {
             entity.HasKey(e => e.IdRutina).HasName("PK__rutinas__A28496675A154BCD");
 
@@ -142,7 +142,7 @@ public partial class GymEtitcContext : DbContext
             entity.Property(e => e.TiempoRutinaMin).HasColumnName("tiempo_rutina_min");
         });
 
-        modelBuilder.Entity<Usuario>(entity =>
+        modelBuilder.Entity<Usuarios>(entity =>
         {
             entity.HasKey(e => e.IdUsuario).HasName("PK__usuarios__4E3E04AD1D477F6A");
 
@@ -177,7 +177,7 @@ public partial class GymEtitcContext : DbContext
                 .HasConstraintName("FK__usuarios__id_pla__412EB0B6");
         });
 
-        modelBuilder.Entity<Valoracione>(entity =>
+        modelBuilder.Entity<Valoraciones>(entity =>
         {
             entity.HasKey(e => e.IdValoracion).HasName("PK__valoraci__1861B249C64F999B");
 
