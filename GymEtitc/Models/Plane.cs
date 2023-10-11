@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GymEtitc.Models;
 
-public partial class Planes
+public partial class Plane
 {
     public int IdPlan { get; set; }
 
@@ -13,5 +13,5 @@ public partial class Planes
 
     public string DescripcionPlan { get; set; } = null!;
 
-    public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
+    public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
 }

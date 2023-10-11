@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GymEtitc.Models;
 
-public partial class Implementos
+public partial class Implemento
 {
     public int IdImplemento { get; set; }
 
@@ -12,4 +12,6 @@ public partial class Implementos
     public string DescripcionImplemento { get; set; } = null!;
 
     public string NombreImplemento { get; set; } = null!;
+
+    public string SerialImplemento { get; set; } = null!;
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace GymEtitc.Models;
 
-public partial class Usuarios
+public partial class Usuario
 {
+    public int IdUsuario { get; set; }
+
     public int NumDocumento { get; set; }
 
     public DateTime FechaRegistro { get; set; }
@@ -19,7 +21,7 @@ public partial class Usuarios
 
     public int IdPlan { get; set; }
 
-    public virtual Planes IdPlanNavigation { get; set; } = null!;
+    public virtual Plane IdPlanNavigation { get; set; } = null!;
 
-    public virtual ICollection<Valoraciones> Valoraciones { get; set; } = new List<Valoraciones>();
+    public virtual ICollection<Valoracione> Valoraciones { get; set; } = new List<Valoracione>();
 }
