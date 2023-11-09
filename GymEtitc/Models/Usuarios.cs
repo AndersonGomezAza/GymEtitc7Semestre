@@ -5,6 +5,8 @@ namespace GymEtitc.Models;
 
 public partial class Usuarios
 {
+    public int IdUsuario { get; set; }
+
     public int NumDocumento { get; set; }
 
     public DateTime FechaRegistro { get; set; }

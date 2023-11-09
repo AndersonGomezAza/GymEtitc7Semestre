@@ -29,7 +29,7 @@ namespace GymEtitc.Controllers
               return NotFound();
           }
             var valoraciones = from valoracion in await _context.Valoraciones.ToListAsync()
-                           join usuario in await _context.Usuarios.ToListAsync() on valoracion.NumDocumento equals usuario.NumDocumento
+                           join usuario in await _context.Usuarios.ToListAsync() on valoracion.IdUsuario equals usuario.IdUsuario
                            select new
                            {
                                valoracion.FechaValoracion,

@@ -19,6 +19,8 @@ public partial class GymEtitcContext : DbContext
 
     public virtual DbSet<Implementos> Implementos { get; set; }
 
+    public virtual DbSet<Login> Logins { get; set; }
+
     public virtual DbSet<Maquinarias> Maquinarias { get; set; }
 
     public virtual DbSet<Planes> Planes { get; set; }
@@ -37,13 +39,11 @@ public partial class GymEtitcContext : DbContext
     {
         modelBuilder.Entity<Actividades>(entity =>
         {
-            entity.HasKey(e => e.IdActividad).HasName("PK__activida__DCD3488398578586");
+            entity.HasKey(e => e.IdActividad).HasName("PK__activida__DCD34883D99C966C");
 
             entity.ToTable("actividades");
 
-            entity.Property(e => e.IdActividad)
-                .ValueGeneratedNever()
-                .HasColumnName("id_actividad");
+            entity.Property(e => e.IdActividad).HasColumnName("id_actividad");
             entity.Property(e => e.CategoriaActividad)
                 .HasMaxLength(30)
                 .IsUnicode(false)
@@ -56,13 +56,11 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Implementos>(entity =>
         {
-            entity.HasKey(e => e.IdImplemento).HasName("PK__implemen__A5EEC5D08716F6BC");
+            entity.HasKey(e => e.IdImplemento).HasName("PK__implemen__A5EEC5D0CBAED87E");
 
             entity.ToTable("implementos");
 
-            entity.Property(e => e.IdImplemento)
-                .ValueGeneratedNever()
-                .HasColumnName("id_implemento");
+            entity.Property(e => e.IdImplemento).HasColumnName("id_implemento");
             entity.Property(e => e.CategoriaImplemento)
                 .HasMaxLength(30)
                 .IsUnicode(false)
@@ -74,17 +72,44 @@ public partial class GymEtitcContext : DbContext
                 .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("nombre_implemento");
+            entity.Property(e => e.SerialImplemento)
+                .HasMaxLength(30)
+                .IsUnicode(false)
+                .HasColumnName("serial_implemento");
+        });
+
+        modelBuilder.Entity<Login>(entity =>
+        {
+            entity.HasKey(e => e.IdLogin).HasName("PK__login__068B3EBB688A34C5");
+
+            entity.ToTable("login");
+
+            entity.Property(e => e.IdLogin).HasColumnName("idLogin");
+            entity.Property(e => e.ApellidoUsuario)
+                .HasMaxLength(40)
+                .IsUnicode(false)
+                .HasColumnName("apellidoUsuario");
+            entity.Property(e => e.CorreoUsuario)
+                .HasMaxLength(40)
+                .IsUnicode(false)
+                .HasColumnName("correoUsuario");
+            entity.Property(e => e.NombreUsuario)
+                .HasMaxLength(40)
+                .IsUnicode(false)
+                .HasColumnName("nombreUsuario");
+            entity.Property(e => e.PasswordUsuario)
+                .HasMaxLength(40)
+                .IsUnicode(false)
+                .HasColumnName("passwordUsuario");
         });
 
         modelBuilder.Entity<Maquinarias>(entity =>
         {
-            entity.HasKey(e => e.IdMaquinaria).HasName("PK__maquinar__8B61DA977846FB0A");
+            entity.HasKey(e => e.IdMaquinaria).HasName("PK__maquinar__8B61DA975FF9DAA8");
 
             entity.ToTable("maquinarias");
 
-            entity.Property(e => e.IdMaquinaria)
-                .ValueGeneratedNever()
-                .HasColumnName("id_maquinaria");
+            entity.Property(e => e.IdMaquinaria).HasColumnName("id_maquinaria");
             entity.Property(e => e.CategoriaMaquinaria)
                 .HasMaxLength(30)
                 .IsUnicode(false)
@@ -108,13 +133,11 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Planes>(entity =>
         {
-            entity.HasKey(e => e.IdPlan).HasName("PK__planes__3901EAE3172BC725");
+            entity.HasKey(e => e.IdPlan).HasName("PK__planes__3901EAE34DC5C5FD");
 
             entity.ToTable("planes");
 
-            entity.Property(e => e.IdPlan)
-                .ValueGeneratedNever()
-                .HasColumnName("id_plan");
+            entity.Property(e => e.IdPlan).HasColumnName("id_plan");
             entity.Property(e => e.DescripcionPlan)
                 .HasColumnType("text")
                 .HasColumnName("descripcion_plan");
@@ -126,13 +149,11 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Rutinas>(entity =>
         {
-            entity.HasKey(e => e.IdRutina).HasName("PK__rutinas__A2849667CE613BB4");
+            entity.HasKey(e => e.IdRutina).HasName("PK__rutinas__A28496679F38D2D4");
 
             entity.ToTable("rutinas");
 
-            entity.Property(e => e.IdRutina)
-                .ValueGeneratedNever()
-                .HasColumnName("id_rutina");
+            entity.Property(e => e.IdRutina).HasColumnName("id_rutina");
             entity.Property(e => e.CaloriasRutina).HasColumnName("calorias_rutina");
             entity.Property(e => e.CategoriaRutina)
                 .HasMaxLength(30)
@@ -150,13 +171,11 @@ public partial class GymEtitcContext : DbContext
 
         modelBuilder.Entity<Usuarios>(entity =>
         {
-            entity.HasKey(e => e.NumDocumento).HasName("PK__usuarios__7BBF0F6F09BF8ABA");
+            entity.HasKey(e => e.IdUsuario).HasName("PK__usuarios__4E3E04AD397D4593");
 
             entity.ToTable("usuarios");
 
-            entity.Property(e => e.NumDocumento)
-                .ValueGeneratedNever()
-                .HasColumnName("num_documento");
+            entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
             entity.Property(e => e.Apellidos)
                 .HasMaxLength(30)
                 .IsUnicode(false)
@@ -169,6 +188,7 @@ public partial class GymEtitcContext : DbContext
                 .HasMaxLength(30)
                 .IsUnicode(false)
                 .HasColumnName("nombres");
+            entity.Property(e => e.NumDocumento).HasColumnName("num_documento");
             entity.Property(e => e.Rol)
                 .HasMaxLength(30)
                 .IsUnicode(false)
@@ -181,20 +201,18 @@ public partial class GymEtitcContext : DbContext
             entity.HasOne(d => d.IdPlanNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdPlan)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__usuarios__id_pla__46E78A0C");
+                .HasConstraintName("FK__usuarios__id_pla__440B1D61");
         });
 
         modelBuilder.Entity<Valoraciones>(entity =>
         {
-            entity.HasKey(e => e.IdValoracion).HasName("PK__valoraci__1861B249F366BEE4");
+            entity.HasKey(e => e.IdValoracion).HasName("PK__valoraci__1861B249D66427F7");
 
             entity.ToTable("valoraciones");
 
-            entity.Property(e => e.IdValoracion)
-                .ValueGeneratedNever()
-                .HasColumnName("id_valoracion");
+            entity.Property(e => e.IdValoracion).HasColumnName("id_valoracion");
             entity.Property(e => e.CategoriaValoracion)
-                .HasMaxLength(30)
+                .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("categoria_valoracion");
             entity.Property(e => e.DescripcionValoracion)
@@ -203,13 +221,13 @@ public partial class GymEtitcContext : DbContext
             entity.Property(e => e.FechaValoracion)
                 .HasColumnType("date")
                 .HasColumnName("fecha_valoracion");
-            entity.Property(e => e.NumDocumento).HasColumnName("num_documento");
+            entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
             entity.Property(e => e.RecomendacionValoracion).HasColumnName("recomendacion_valoracion");
 
-            entity.HasOne(d => d.NumDocumentoNavigation).WithMany(p => p.Valoraciones)
-                .HasForeignKey(d => d.NumDocumento)
+            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Valoraciones)
+                .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__valoracio__num_d__4BAC3F29");
+                .HasConstraintName("FK__valoracio__id_us__44FF419A");
         });
 
         OnModelCreatingPartial(modelBuilder);

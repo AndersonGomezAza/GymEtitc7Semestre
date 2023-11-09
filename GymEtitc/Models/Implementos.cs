@@ -12,4 +12,6 @@ public partial class Implementos
     public string DescripcionImplemento { get; set; } = null!;
 
     public string NombreImplemento { get; set; } = null!;
+
+    public string SerialImplemento { get; set; } = null!;
 }
