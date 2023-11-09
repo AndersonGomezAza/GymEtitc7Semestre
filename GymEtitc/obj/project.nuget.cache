@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "070G+18l68F/JR4oO2qMkFdWNoPa9J8yPD44Dz2MlOpEsiKCd1m20AF1hzBwVikwdm7KRHCXWlMOhl1XrnBT2w==",
+  "dgSpecHash": "qV9ZuN4DLqXTSaWdjx9H/y9z2+MMcba3+NsSQKdSGCOUeCzbzrw0yAdNVQvbigI2k9VksIHAs9XtbiAxAlmUzA==",
   "success": true,
-  "projectFilePath": "D:\\7 semestre\\PROGRAMACION 4\\PROYECTOGYM\\GymEtitc7Semestre\\GymEtitc\\GymEtitc.csproj",
+  "projectFilePath": "D:\\Universidad 7 semestre\\PROYECTO 7 SEMESTRE\\GymEtitc7Semestre\\GymEtitc\\GymEtitc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
