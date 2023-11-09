@@ -10,4 +10,8 @@ public partial class Login
     public string CorreoUsuario { get; set; } = null!;
 
     public string PasswordUsuario { get; set; } = null!;
+
+    public string? NombreUsuario { get; set; }
+
+    public string? ApellidoUsuario { get; set; }
 }
