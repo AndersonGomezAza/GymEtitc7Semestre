@@ -32,6 +32,7 @@ namespace GymEtitc.Controllers
                            join usuario in await _context.Usuarios.ToListAsync() on valoracion.IdUsuario equals usuario.IdUsuario
                            select new
                            {
+                               valoracion.IdValoracion,
                                valoracion.FechaValoracion,
                                valoracion.CategoriaValoracion,
                                valoracion.DescripcionValoracion,

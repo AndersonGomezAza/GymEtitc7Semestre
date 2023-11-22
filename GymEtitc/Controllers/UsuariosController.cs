@@ -33,6 +33,7 @@ namespace GymEtitc.Controllers
                            join plan in await _context.Planes.ToListAsync() on usuario.IdPlan equals plan.IdPlan
                            select new
                            {
+                               usuario.IdUsuario,
                                usuario.NumDocumento,
                                usuario.Nombres,
                                usuario.Apellidos,
